@@ -1,0 +1,7 @@
+--script 1
+local part = script.Parent
+local function onTouched()
+  print("Part was touched")
+end
+part.Touched:Connect(onTouched)
+
