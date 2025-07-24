@@ -1,0 +1,61 @@
+--speed up script
+local part = script.Parent
+local clickDetector = part:WaitForChild("ClickDetector") 
+
+
+local clickCount = 0
+local requiredClicks = 3
+
+clickDetector.MouseClick:Connect(function(player)
+	clickCount = clickCount + 1
+	print("The Speed up part has been clicked "..clickCount.." number of times")
+	--print(clickCount)
+	--print("The clickcount is:"..clickCount)
+	if clickCount == requiredClicks then
+		part.Transparency = 1
+		part.CanCollide = false
+		print("we are in the if-block now, and the Speed Up part has vanished!")
+		local character = player.Character
+		if character then
+			local humanoid = character:FindFirstChild("Humanoid")
+			if humanoid then
+				local originalSpeed = humanoid.WalkSpeed
+				humanoid.WalkSpeed = originalSpeed*100
+				--wait(5)
+				--humanoid.WalkSpeed = originalSpeed
+			end
+		end
+	end
+end)
+
+
+
+--slow down script
+local part = script.Parent
+local clickDetector = part:WaitForChild("ClickDetector") 
+
+
+local clickCount = 0
+local requiredClicks = 3
+
+clickDetector.MouseClick:Connect(function(player)
+	clickCount = clickCount + 1
+	print("The Speed up part has been clicked "..clickCount.." number of times")
+	--print(clickCount)
+	--print("The clickcount is:"..clickCount)
+	if clickCount == requiredClicks then
+		part.Transparency = 1
+		part.CanCollide = false
+		print("we are in the if-block now, and the Speed Down part has vanished!")
+		local character = player.Character
+		if character then
+			local humanoid = character:FindFirstChild("Humanoid")
+			if humanoid then
+				local originalSpeed = humanoid.WalkSpeed
+				humanoid.WalkSpeed = originalSpeed/5
+				--wait(5)
+				--humanoid.WalkSpeed = originalSpeed
+			end
+		end
+	end
+end)
